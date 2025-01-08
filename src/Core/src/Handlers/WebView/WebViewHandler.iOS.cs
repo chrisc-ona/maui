@@ -28,6 +28,12 @@ namespace Microsoft.Maui.Handlers
 				handler.PlatformView.UIDelegate = platformHandler._delegate ??= new MauiWebViewUIDelegate(handler);
 		}
 
+		public static void MapWKNavigationDelegate(IWebViewHandler handler, IWebView webView)
+		{
+			if (handler is WebViewHandler platformHandler)
+				handler.PlatformView.NavigationDelegate = new MauiWebViewNavigationDelegate(platformHandler);
+		}
+
 		public static void MapSource(IWebViewHandler handler, IWebView webView)
 		{
 			IWebViewDelegate? webViewDelegate = handler.PlatformView as IWebViewDelegate;
